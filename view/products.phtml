@@ -1,0 +1,38 @@
+<?php include "partials/header.phtml"  ?>
+
+    <h1>Products</h1>
+    <p>list of products</p>
+
+    <div class="panel panel-default">
+        <div class="panel-body" style="background-color: <?=$_SESSION['color']?>">
+            Продуктов в корзине: <?=count($userProducts)?>
+        </div>
+    </div>
+
+<form>
+<table>
+
+    <?php $counter = 0; ?>
+
+    <?php foreach ($result as $row) { ?>
+
+        <tr>
+
+        <?php foreach ($row as $productId => $product) { ?>
+
+            <td>
+                <img width="250" height="250" src="/uploads/<?=$product['image']?>">
+                <p><?=$product['name']?></p>
+                <p>Category: <b><?=$product['category']?></b></p>
+                <p>Price: <b><?=$product['price']?></b></p>
+                <p><button type="submit" name="product" value="<?=$counter?>" class="btn btn-success" href="#">Buy</button> </p>
+            </td>
+            <?php $counter++; ?>
+        <?php } ?>
+        </tr>
+
+    <?php } ?>
+
+</table>
+</form>
+<?php include "partials/footer.phtml"  ?>
